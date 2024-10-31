@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.net.*;
 
-public class IterfaceCliente extends JFrame {
+public class InterfaceCliente extends JFrame {
     private JTextField inputField;
     private JTextArea displayArea;
     private JComboBox<String> clientSelector;
@@ -16,7 +16,7 @@ public class IterfaceCliente extends JFrame {
     private Socket socket;
     private boolean authenticated = false;
 
-    public IterfaceCliente() {
+    public InterfaceCliente() {
         super("Interface Cliente");
         clientSelector = new JComboBox<>(new String[] { "Cliente 1", "Cliente 2" });
         clientSelector.addActionListener(new ActionListener() {
@@ -109,7 +109,7 @@ public class IterfaceCliente extends JFrame {
     }
 
     public static void main(String[] args) {
-        IterfaceCliente client = new IterfaceCliente();
+        InterfaceCliente client = new InterfaceCliente();
         client.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         client.setVisible(true);
         client.startClient("1");

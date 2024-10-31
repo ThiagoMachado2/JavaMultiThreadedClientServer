@@ -3,6 +3,7 @@ package org.arquiteturaclienteservidor.servidor;
 import java.io.*;
 import java.net.*;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -12,8 +13,8 @@ public class Servidor {
     private static AtomicInteger clientCount = new AtomicInteger(0);
 
     public static void main(String[] args) {
-        data.put(1, "Informação 1");
-        data.put(2, "Informação 2");
+        data.put(Integer.valueOf(1), "Informação 1");
+        data.put(Integer.valueOf(2), "Informação 2");
 
         ExecutorService pool = Executors.newFixedThreadPool(4);
         try (ServerSocket serverSocket = new ServerSocket(5050)) {
@@ -49,7 +50,7 @@ public class Servidor {
                         System.out.println("Cliente " + clientId + " ID recebido: " + request);
                         try {
                             int id = Integer.parseInt(request);
-                            String response = data.getOrDefault(id, "ID não encontrado.");
+                            String response = data.getOrDefault(Integer.valueOf(id), "ID não encontrado.");
                             out.println(response);
                             System.out.println("Cliente " + clientId + " Resposta enviada: " + response);
                             authenticated = true;
